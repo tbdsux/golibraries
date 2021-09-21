@@ -18,13 +18,13 @@ type ProjectResponse struct {
 	LatestStableReleaseNumber      string      `json:"latest_stable_release_number"`
 	LatestStableReleasePublishedAt string      `json:"latest_stable_release_published_at"`
 	LicenseNormalized              bool        `json:"license_normalized"`
-	Licenses                       Licenses    `json:"licenses"`
+	Licenses                       string      `json:"licenses"`
 	Name                           string      `json:"name"`
-	NormalizedLicenses             []Licenses  `json:"normalized_licenses"`
+	NormalizedLicenses             []string    `json:"normalized_licenses"`
 	PackageManagerURL              string      `json:"package_manager_url"`
-	Platform                       Platform    `json:"platform"`
+	Platform                       string      `json:"platform"`
 	Rank                           int64       `json:"rank"`
-	RepositoryLicense              Licenses    `json:"repository_license"`
+	RepositoryLicense              string      `json:"repository_license"`
 	RepositoryURL                  string      `json:"repository_url"`
 	Stars                          int64       `json:"stars"`
 	Status                         interface{} `json:"status"`
@@ -32,12 +32,12 @@ type ProjectResponse struct {
 }
 
 type Version struct {
-	Number            string          `json:"number"`
-	PublishedAt       string          `json:"published_at"`
-	SpdxExpression    Licenses        `json:"spdx_expression"`
-	OriginalLicense   OriginalLicense `json:"original_license"`
-	ResearchedAt      interface{}     `json:"researched_at"`
-	RepositorySources []Platform      `json:"repository_sources"`
+	Number            string      `json:"number"`
+	PublishedAt       string      `json:"published_at"`
+	SpdxExpression    string      `json:"spdx_expression"`
+	OriginalLicense   string      `json:"original_license"`
+	ResearchedAt      interface{} `json:"researched_at"`
+	RepositorySources []string    `json:"repository_sources"`
 }
 
 // ProjectDependencies() response struct.
@@ -83,70 +83,70 @@ type ProjectDependentsResponse []ProjectResponse
 type ProjectDependentRepositoriesResponse []ProjectDependentRepositoriesResponseElement
 
 type ProjectDependentRepositoriesResponseElement struct {
-	FullName                 string          `json:"full_name"`
-	Description              string          `json:"description"`
-	Fork                     bool            `json:"fork"`
-	CreatedAt                string          `json:"created_at"`
-	UpdatedAt                string          `json:"updated_at"`
-	PushedAt                 string          `json:"pushed_at"`
-	Homepage                 string          `json:"homepage"`
-	Size                     int64           `json:"size"`
-	StargazersCount          int64           `json:"stargazers_count"`
-	Language                 Language        `json:"language"`
-	HasIssues                bool            `json:"has_issues"`
-	HasWiki                  bool            `json:"has_wiki"`
-	HasPages                 bool            `json:"has_pages"`
-	ForksCount               int64           `json:"forks_count"`
-	MirrorURL                interface{}     `json:"mirror_url"`
-	OpenIssuesCount          int64           `json:"open_issues_count"`
-	DefaultBranch            DefaultBranch   `json:"default_branch"`
-	SubscribersCount         int64           `json:"subscribers_count"`
-	UUID                     string          `json:"uuid"`
-	SourceName               interface{}     `json:"source_name"`
-	License                  LicenseEnum     `json:"license"`
-	Private                  bool            `json:"private"`
-	ContributionsCount       int64           `json:"contributions_count"`
-	HasReadme                HasReadme       `json:"has_readme"`
-	HasChangelog             HasChangelog    `json:"has_changelog"`
-	HasContributing          HasContributing `json:"has_contributing"`
-	HasLicense               HasLicense      `json:"has_license"`
-	HasCoc                   string          `json:"has_coc"`
-	HasThreatModel           interface{}     `json:"has_threat_model"`
-	HasAudit                 interface{}     `json:"has_audit"`
-	Status                   string          `json:"status"`
-	LastSyncedAt             string          `json:"last_synced_at"`
-	Rank                     int64           `json:"rank"`
-	HostType                 HostType        `json:"host_type"`
-	HostDomain               interface{}     `json:"host_domain"`
-	Name                     interface{}     `json:"name"`
-	SCM                      SCM             `json:"scm"`
-	ForkPolicy               interface{}     `json:"fork_policy"`
-	PullRequestsEnabled      interface{}     `json:"pull_requests_enabled"`
-	LogoURL                  interface{}     `json:"logo_url"`
-	Keywords                 []string        `json:"keywords"`
-	GithubContributionsCount int64           `json:"github_contributions_count"`
-	GithubID                 string          `json:"github_id"`
+	FullName                 string      `json:"full_name"`
+	Description              string      `json:"description"`
+	Fork                     bool        `json:"fork"`
+	CreatedAt                string      `json:"created_at"`
+	UpdatedAt                string      `json:"updated_at"`
+	PushedAt                 string      `json:"pushed_at"`
+	Homepage                 string      `json:"homepage"`
+	Size                     int64       `json:"size"`
+	StargazersCount          int64       `json:"stargazers_count"`
+	Language                 string      `json:"language"`
+	HasIssues                bool        `json:"has_issues"`
+	HasWiki                  bool        `json:"has_wiki"`
+	HasPages                 bool        `json:"has_pages"`
+	ForksCount               int64       `json:"forks_count"`
+	MirrorURL                interface{} `json:"mirror_url"`
+	OpenIssuesCount          int64       `json:"open_issues_count"`
+	DefaultBranch            string      `json:"default_branch"`
+	SubscribersCount         int64       `json:"subscribers_count"`
+	UUID                     string      `json:"uuid"`
+	SourceName               interface{} `json:"source_name"`
+	License                  string      `json:"license"`
+	Private                  bool        `json:"private"`
+	ContributionsCount       int64       `json:"contributions_count"`
+	HasReadme                string      `json:"has_readme"`
+	HasChangelog             string      `json:"has_changelog"`
+	HasContributing          string      `json:"has_contributing"`
+	HasLicense               string      `json:"has_license"`
+	HasCoc                   string      `json:"has_coc"`
+	HasThreatModel           interface{} `json:"has_threat_model"`
+	HasAudit                 interface{} `json:"has_audit"`
+	Status                   string      `json:"status"`
+	LastSyncedAt             string      `json:"last_synced_at"`
+	Rank                     int64       `json:"rank"`
+	HostType                 string      `json:"host_type"`
+	HostDomain               interface{} `json:"host_domain"`
+	Name                     interface{} `json:"name"`
+	SCM                      string      `json:"scm"`
+	ForkPolicy               interface{} `json:"fork_policy"`
+	PullRequestsEnabled      interface{} `json:"pull_requests_enabled"`
+	LogoURL                  interface{} `json:"logo_url"`
+	Keywords                 []string    `json:"keywords"`
+	GithubContributionsCount int64       `json:"github_contributions_count"`
+	GithubID                 string      `json:"github_id"`
 }
 
 // ProjectContributors() response struct.
 type ProjectContributorsResponse []ProjectContributorsResponseElement
 
 type ProjectContributorsResponseElement struct {
-	GithubID     string   `json:"github_id"`
-	Login        string   `json:"login"`
-	UserType     UserType `json:"user_type"`
-	CreatedAt    string   `json:"created_at"`
-	UpdatedAt    string   `json:"updated_at"`
-	Name         *string  `json:"name"`
-	Company      *string  `json:"company"`
-	Blog         *string  `json:"blog"`
-	Location     *string  `json:"location"`
-	Hidden       bool     `json:"hidden"`
-	LastSyncedAt string   `json:"last_synced_at"`
-	Email        *string  `json:"email"`
-	Bio          *string  `json:"bio"`
-	UUID         string   `json:"uuid"`
-	HostType     HostType `json:"host_type"`
+	GithubID     string  `json:"github_id"`
+	Login        string  `json:"login"`
+	UserType     string  `json:"user_type"`
+	CreatedAt    string  `json:"created_at"`
+	UpdatedAt    string  `json:"updated_at"`
+	Name         *string `json:"name"`
+	Company      *string `json:"company"`
+	Blog         *string `json:"blog"`
+	Location     *string `json:"location"`
+	Hidden       bool    `json:"hidden"`
+	LastSyncedAt string  `json:"last_synced_at"`
+	Email        *string `json:"email"`
+	Bio          *string `json:"bio"`
+	UUID         string  `json:"uuid"`
+	HostType     string  `json:"host_type"`
 }
 
 // ProjectSourceRank() response struct.
@@ -174,36 +174,6 @@ type ProjectSourceRankResponse struct {
 
 // ProjectSearch() response struct.
 type ProjectSearchResponse []ProjectResponse
-
-type License string
-
-type SpdxExpression string
-
-type UserType string
-
-type DefaultBranch string
-
-type HasChangelog string
-
-type HasContributing string
-
-type HasLicense string
-
-type HasReadme string
-
-type HostType string
-
-type LicenseEnum string
-
-type SCM string
-
-type Language string
-
-type Licenses string
-
-type Platform string
-
-type OriginalLicense string
 
 // Get information about a package and its versions.
 func (l *LibrariesIO) Project(platform, name string) (ProjectResponse, error) {

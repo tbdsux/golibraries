@@ -19,7 +19,7 @@ func (l *LibrariesIO) Platforms(p PaginateOptions) (PlatformsResponse, error) {
 		ApiKey: l.ApiKey, Page: p.Page, PerPage: p.PerPage,
 	}
 
-	l.client.Get(API_URL+"/platforms?"+parseQuery(q), &r)
+	err := l.client.Get(API_URL+"/platforms?"+parseQuery(q), &r)
 
-	return r, nil
+	return r, err
 }
