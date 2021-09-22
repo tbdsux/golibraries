@@ -162,11 +162,16 @@ func (l *LibrariesIO) RepositoryDependencies(owner, name string) (RepositoryDepe
 }
 
 // Get a list of packages referencing the given repository.
-func (l *LibrariesIO) RepositoryProjects(owner, name string, p PaginateOptions) (RepositoryProjectsResponse, error) {
+func (l *LibrariesIO) RepositoryProjects(owner, name string, p *PaginateOptions) (RepositoryProjectsResponse, error) {
 	var r = RepositoryProjectsResponse{}
 
+	// query options
 	q := QueryOptions{
-		ApiKey: l.ApiKey, Page: p.Page, PerPage: p.PerPage,
+		ApiKey: l.ApiKey,
+	}
+	if p != nil {
+		q.Page = p.Page
+		q.PerPage = p.PerPage
 	}
 
 	err := l.client.Get(API_URL+fmt.Sprintf("github/%s/%s/projects?%s", owner, name, parseQuery(q)), &r)

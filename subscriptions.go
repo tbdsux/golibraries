@@ -69,11 +69,16 @@ type SubscriptionVersion struct {
 }
 
 // List packages that a user is subscribed to receive notifications about new releases.
-func (l *LibrariesIO) UserSubscriptions(p PaginateOptions) (UserSubscriptionsResponse, error) {
+func (l *LibrariesIO) UserSubscriptions(p *PaginateOptions) (UserSubscriptionsResponse, error) {
 	var r = UserSubscriptionsResponse{}
 
+	// query options
 	q := QueryOptions{
-		ApiKey: l.ApiKey, Page: p.Page, PerPage: p.PerPage,
+		ApiKey: l.ApiKey,
+	}
+	if p != nil {
+		q.Page = p.Page
+		q.PerPage = p.PerPage
 	}
 
 	err := l.client.Get(API_URL+fmt.Sprintf("subscriptions?%s", parseQuery(q)), &r)

@@ -194,12 +194,17 @@ func (l *LibrariesIO) ProjectDependencies(platform, name, version string) (Proje
 }
 
 // Get packages that have at least one version that depends on a given project.
-func (l *LibrariesIO) ProjectDependents(platform, name string, p PaginateOptions) (ProjectDependentsResponse, error) {
+func (l *LibrariesIO) ProjectDependents(platform, name string, p *PaginateOptions) (ProjectDependentsResponse, error) {
 	var r = ProjectDependentsResponse{}
 
 	// query options
+	// query options
 	q := QueryOptions{
-		ApiKey: l.ApiKey, Page: p.Page, PerPage: p.PerPage,
+		ApiKey: l.ApiKey,
+	}
+	if p != nil {
+		q.Page = p.Page
+		q.PerPage = p.PerPage
 	}
 
 	err := l.client.Get(API_URL+fmt.Sprintf("%s/%s/dependents?%s", platform, name, parseQuery(q)), &r)
@@ -208,12 +213,16 @@ func (l *LibrariesIO) ProjectDependents(platform, name string, p PaginateOptions
 }
 
 // Get repositories that depend on a given project.
-func (l *LibrariesIO) ProjectDependentRepositories(platform, name string, p PaginateOptions) (ProjectDependentRepositoriesResponse, error) {
+func (l *LibrariesIO) ProjectDependentRepositories(platform, name string, p *PaginateOptions) (ProjectDependentRepositoriesResponse, error) {
 	var r = ProjectDependentRepositoriesResponse{}
 
 	// query options
 	q := QueryOptions{
-		ApiKey: l.ApiKey, Page: p.Page, PerPage: p.PerPage,
+		ApiKey: l.ApiKey,
+	}
+	if p != nil {
+		q.Page = p.Page
+		q.PerPage = p.PerPage
 	}
 
 	err := l.client.Get(API_URL+fmt.Sprintf("%s/%s/dependent_repositories?%s", platform, name, parseQuery(q)), &r)
@@ -222,11 +231,16 @@ func (l *LibrariesIO) ProjectDependentRepositories(platform, name string, p Pagi
 }
 
 // Get users that have contributed to a given project.
-func (l *LibrariesIO) ProjectContributors(platform, name string, p PaginateOptions) (ProjectContributorsResponse, error) {
+func (l *LibrariesIO) ProjectContributors(platform, name string, p *PaginateOptions) (ProjectContributorsResponse, error) {
 	var r = ProjectContributorsResponse{}
 
+	// query options
 	q := QueryOptions{
-		ApiKey: l.ApiKey, Page: p.Page, PerPage: p.PerPage,
+		ApiKey: l.ApiKey,
+	}
+	if p != nil {
+		q.Page = p.Page
+		q.PerPage = p.PerPage
 	}
 
 	err := l.client.Get(API_URL+fmt.Sprintf("%s/%s/contributors?%s", platform, name, parseQuery(q)), &r)
