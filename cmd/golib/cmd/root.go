@@ -16,7 +16,6 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -25,6 +24,7 @@ import (
 )
 
 var cfgFile string
+var ApiKey string
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -52,6 +52,7 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
+	rootCmd.PersistentFlags().StringVar(&ApiKey, "api-key", "", "Libraries.io user API Key")
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.golib.yaml)")
 
 	// Cobra also supports local flags, which will only run
@@ -77,8 +78,14 @@ func initConfig() {
 
 	viper.AutomaticEnv() // read in environment variables that match
 
+	// try to read config file
+	viper.ReadInConfig()
 	// If a config file is found, read it in.
-	if err := viper.ReadInConfig(); err == nil {
-		fmt.Fprintln(os.Stderr, "Using config file:", viper.ConfigFileUsed())
+	// if err := viper.ReadInConfig(); err == nil {
+	// 	fmt.Fprintln(os.Stderr, "Using config file:", viper.ConfigFileUsed())
+	// }
+
+	if ApiKey == "" {
+		ApiKey = viper.GetString("ApiKey")
 	}
 }
