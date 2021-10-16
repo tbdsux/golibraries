@@ -81,14 +81,4 @@ func init() {
 	searchCmd.Flags().StringSliceVarP(&searchOptionsLanguages, "languages", "l", []string{}, "Search only on specific platforms")
 	searchCmd.Flags().Uint64Var(&searchOptionsPage, "page", 1, "Page of search result.")
 	searchCmd.Flags().Uint64Var(&searchOptionsPerPage, "per-page", 10, "Number of search result items to return.")
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// searchCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// searchCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
