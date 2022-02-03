@@ -2,6 +2,18 @@
 
 An API wrapper for Libraries.io (https://libraries.io/api)
 
+## Install
+
+```sh
+go get -u github.com/TheBoringDude/golibraries
+```
+
+### CLI
+
+```sh
+go install github.com/TheBoringDude/golibraries/cmd/golib@latest
+```
+
 ## Usage
 
 ```go
